@@ -16,7 +16,7 @@ export const CodeInspector: React.FC<CodeInspectorProps> = ({ jsxCode, cssCode, 
   const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      // You could add a toast notification here
+      
       console.log('Code copied to clipboard!');
     } catch (err) {
       console.error('Failed to copy code:', err);
@@ -26,13 +26,13 @@ export const CodeInspector: React.FC<CodeInspectorProps> = ({ jsxCode, cssCode, 
   const downloadAsZip = async () => {
     const zip = new JSZip();
     
-    // Add JSX/TSX file
+   
     zip.file(`${title}.tsx`, jsxCode);
     
-    // Add CSS file
+   
     zip.file(`${title}.css`, cssCode);
     
-    // Add package.json for React project
+   
     const packageJson = {
       name: title.toLowerCase().replace(/\s+/g, '-'),
       version: "1.0.0",
@@ -43,7 +43,7 @@ export const CodeInspector: React.FC<CodeInspectorProps> = ({ jsxCode, cssCode, 
     };
     zip.file('package.json', JSON.stringify(packageJson, null, 2));
     
-    // Add README
+   
     const readme = `# ${title}
 
 This component was generated using AI.
@@ -64,7 +64,7 @@ function App() {
 `;
     zip.file('README.md', readme);
     
-    // Generate and download zip
+    
     const blob = await zip.generateAsync({ type: 'blob' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -77,7 +77,7 @@ function App() {
   };
 
   const extractCSSFromJSX = (jsx: string): string => {
-    // Extract Tailwind classes and convert to CSS
+    
     const tailwindClasses = jsx.match(/className="([^"]*)"/g) || [];
     let css = '';
     

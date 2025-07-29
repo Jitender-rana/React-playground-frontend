@@ -42,7 +42,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({ onCodeGenerated, messages 
     onMessageAdd?.(userMessage);
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}api/ai/generate`, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/ai/generate`, {
         prompt,
       });
 

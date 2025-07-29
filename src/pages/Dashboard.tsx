@@ -48,7 +48,7 @@ export default function Dashboard() {
       setLoading(true);
       setError(null);
       const token = localStorage.getItem("token");
-      const res = await axios.get(`${BACKEND_URL}api/user/sessions`, {
+      const res = await axios.get(`${BACKEND_URL}/api/user/sessions`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -69,7 +69,7 @@ export default function Dashboard() {
   const createSession = async (code: string, prompt: string) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post(`${BACKEND_URL}api/user/session`, {
+      const response = await axios.post(`${BACKEND_URL}/api/user/session`, {
         title: prompt.substring(0, 50) + (prompt.length > 50 ? "..." : ""), // Use prompt as title
         messages: [{ role: "user", content: prompt }], // Store the prompt as a message
         code: code
@@ -95,7 +95,7 @@ export default function Dashboard() {
   const deleteSession = async (sessionId: string) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`${BACKEND_URL}api/user/session/${sessionId}`, {
+      await axios.delete(`${BACKEND_URL}/api/user/session/${sessionId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
