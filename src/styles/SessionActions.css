@@ -1,0 +1,329 @@
+/* SessionActions Styles */
+.session-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.session-action-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.session-action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.session-action-btn:hover::before {
+  left: 100%;
+}
+
+/* Primary Button */
+.session-action-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.session-action-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.session-action-btn.primary:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Secondary Button */
+.session-action-btn.secondary {
+  background: white;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.session-action-btn.secondary:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #475569;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.session-action-btn.secondary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Danger Button */
+.session-action-btn.danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.session-action-btn.danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+}
+
+.session-action-btn.danger:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+/* Success Button */
+.session-action-btn.success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.session-action-btn.success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+.session-action-btn.success:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+/* Icon Styles */
+.session-action-btn svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.session-action-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Small Button Variant */
+.session-action-btn.small {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.session-action-btn.small svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Large Button Variant */
+.session-action-btn.large {
+  padding: 12px 20px;
+  font-size: 16px;
+}
+
+.session-action-btn.large svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Disabled State */
+.session-action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.session-action-btn:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.session-action-btn:disabled svg {
+  transform: none !important;
+}
+
+/* Loading State */
+.session-action-btn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.session-action-btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: actionSpin 1s linear infinite;
+}
+
+@keyframes actionSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Tooltip */
+.session-action-btn {
+  position: relative;
+}
+
+.session-action-btn[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.session-action-btn[title]:hover::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-bottom-color: #1e293b;
+  z-index: 1000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .session-actions {
+    gap: 6px;
+  }
+  
+  .session-action-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .session-action-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .session-action-btn.large {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .session-action-btn.large svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .session-actions {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .session-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Animation Classes */
+.action-fade-in {
+  animation: actionFadeIn 0.3s ease-out;
+}
+
+@keyframes actionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.action-scale-in {
+  animation: actionScaleIn 0.2s ease-out;
+}
+
+@keyframes actionScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .session-action-btn.secondary {
+    background: #334155;
+    color: #e2e8f0;
+    border-color: #475569;
+  }
+  
+  .session-action-btn.secondary:hover {
+    background: #475569;
+    border-color: #64748b;
+    color: #f1f5f9;
+  }
+  
+  .session-action-btn[title]:hover::after {
+    background: #0f172a;
+    border: 1px solid #334155;
+  }
+  
+  .session-action-btn[title]:hover::before {
+    border-bottom-color: #0f172a;
+  }
+}
+
+/* Focus States for Accessibility */
+.session-action-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+.session-action-btn.secondary:focus {
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+.session-action-btn.danger:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3);
+}
+
+.session-action-btn.success:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+} 
