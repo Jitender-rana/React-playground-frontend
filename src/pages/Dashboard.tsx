@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import pg from "../assets/pg.png";
+import { v4 as uuidv4 } from "uuid";
 import { SessionCard } from "../Compoenets/SessionCard"; // adjust path if needed
 import { SessionActions } from "../Compoenets/SessionAction"; // adjust path
 import { ChatPanel } from "../Compoenets/ChatPanel";
@@ -71,7 +72,12 @@ export default function Dashboard() {
       const token = localStorage.getItem("token");
       const response = await axios.post(`${BACKEND_URL}/api/user/session`, {
         title: prompt.substring(0, 50) + (prompt.length > 50 ? "..." : ""), // Use prompt as title
-        messages: [{ role: "user", content: prompt }], // Store the prompt as a message
+        messages: [{
+                id: uuidv4(),
+                role: "user",
+                content: prompt,
+                timestamp: new Date().toISOString()
+              }], // Store the prompt as a message
         code: code
       }, {
         headers: {
