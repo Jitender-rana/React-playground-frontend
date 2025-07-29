@@ -20,6 +20,7 @@ export function GoogleLoginPage(){
                     console.log(token);
                     if (token) {
                         localStorage.setItem("token", token);
+                        console.log("lets go to dashboard everuthing done");
                         navigate("/dashboard");
                       } else {
                         console.error("No token received from backend");
