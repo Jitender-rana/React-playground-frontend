@@ -1,10 +1,29 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Landing from './pages/Landing';
 import Login from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
 
 function App() {
-  const isAuthenticated = !!localStorage.getItem("token");
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
+
+  
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setIsAuthenticated(!!localStorage.getItem("token"));
+    };
+
+    
+    window.addEventListener('storage', handleStorageChange);
+    
+    
+    window.addEventListener('auth-change', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('auth-change', handleStorageChange);
+    };
+  }, []);
 
   return (
     <BrowserRouter>

@@ -20,6 +20,8 @@ export function GoogleLoginPage(){
                     console.log(token);
                     if (token) {
                         localStorage.setItem("token", token);
+                        // Dispatch custom event to notify App component of auth change
+                        window.dispatchEvent(new Event('auth-change'));
                         console.log("lets go to dashboard everuthing done");
                         navigate("/dashboard");
                       } else {
