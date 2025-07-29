@@ -14,7 +14,7 @@ export function GoogleLoginPage(){
                     const {code}=tokenResponse;
                     console.log(`Received auth code is : ${code}`);
                     console.log("sending request to backend");
-                    const response = await axios.post(`${BACKEND_URL}/api/auth/google`,{code});
+                    const response = await axios.post(`${BACKEND_URL}api/auth/google`,{code});
                     console.log(`Returned response from backend is : ${JSON.stringify(response.data)}`);
                     const {token}=response.data;
                     console.log(token);
